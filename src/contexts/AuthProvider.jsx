@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
+import { AuthContext } from "./AuthContext";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -47,9 +48,17 @@ const AuthProvider = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  },[]);
+  }, []);
 
-  const authInfo={
-    
-  }
+  const authInfo = {
+    user,
+    loading,
+    createUser,
+    signInUser,
+    signInWithGoogle,
+    signOutUser,
+  };
+  return <AuthContext value={authInfo}>{children}</AuthContext>;
 };
+
+export default AuthProvider;
