@@ -1,7 +1,21 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../contexts/AuthContext";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const { user, signOutUser } = use(AuthContext);
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("Logged Out Successfully");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   const links = (
     <>
       <li>
@@ -22,7 +36,8 @@ const Navbar = () => {
       </li>
     </>
   );
-  return   <div>
+  return (
+    <div>
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
@@ -51,21 +66,47 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">
-            Smart <span className="text-primary">Deals</span>
+            Travel<span className="text-primary">Ease</span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
+
+        <div className="navbar-end gap-3">
           {user ? (
-            <a onClick={handleSignOut} className="btn">Logout</a>
+            <>
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user.displayName || "User"}
+              >
+                <img
+                  className="w-10 h-10 rounded-full border"
+                  src={user.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                  alt="User"
+                />
+              </div>
+              <button
+                onClick={handleSignOut}
+                className="btn btn-outline btn-sm"
+              >
+                Logout
+              </button>
+            </>
           ) : (
-            <Link to="/register">Login</Link>
+            <>
+              <Link to="/login" className="btn btn-outline btn-sm">
+                Login
+              </Link>
+              <Link to="/register" className="btn btn-primary btn-sm">
+                Register
+              </Link>
+            </>
           )}
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default Navbar;
