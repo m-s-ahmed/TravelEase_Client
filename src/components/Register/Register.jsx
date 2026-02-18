@@ -71,7 +71,9 @@ const Register = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-base-200">
       <div className="card w-full max-w-md shadow-xl bg-base-100 p-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
+        <h2 className="text-3xl font-bold text-center mb-6">
+          Register on TravelEase
+        </h2>
 
         <form onSubmit={handleRegister} className="space-y-4">
           <input
