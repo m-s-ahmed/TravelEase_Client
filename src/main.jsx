@@ -11,6 +11,7 @@ import MyBookings from "./components/MyBookings/MyBookings.jsx";
 import Register from "./components/Register/Register.jsx";
 import Login from "./components/Login/Login.jsx";
 import AuthProvider from "./contexts/AuthProvider.jsx";
+import VehiclesDetails from "./components/VehiclesDetails/VehiclesDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
         element: <AllVehicles></AllVehicles>,
       },
       {
-        path:"/addvehicles",
-        element:<AddVehicles></AddVehicles>
+        path: "/addvehicles",
+        element: <AddVehicles></AddVehicles>,
       },
       {
         path: "/myvehicles",
@@ -45,6 +46,8 @@ const router = createBrowserRouter([
         path: "/mybookings",
         element: <MyBookings></MyBookings>,
       },
+      { path: "all-vehicles", element: <AllVehicles></AllVehicles> },
+      { path: "vehicles/:id", element: <VehiclesDetails></VehiclesDetails> },
     ],
   },
 ]);
