@@ -6,9 +6,11 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
 import { AuthContext } from "./AuthContext";
+import { updateProfile } from "firebase/auth";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -41,7 +43,7 @@ const AuthProvider = ({ children }) => {
   };
   //   update profile
   const updateUserProfile = (name, photo) => {
-    return updateUserProfile(auth.currentUser, {
+    return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
     });
@@ -66,7 +68,9 @@ const AuthProvider = ({ children }) => {
     signOutUser,
     updateUserProfile,
   };
-  return <AuthContext value={authInfo}>{children}</AuthContext>;
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
