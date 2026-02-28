@@ -114,7 +114,7 @@ const VehiclesDetails = () => {
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <button onClick={handleBookNow} className="btn btn-primary">
-              Book Now / Request Ride
+              Book Now
             </button>
 
             <button
@@ -126,7 +126,7 @@ const VehiclesDetails = () => {
           </div>
 
           <p className="mt-4 text-sm opacity-70">
-            Booking will be saved in database (no payment needed).
+            Booking will be saved in our database.
           </p>
         </div>
       </div>

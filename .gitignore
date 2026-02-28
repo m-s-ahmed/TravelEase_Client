@@ -13,6 +13,12 @@ dist-ssr
 *.local
 .env
 
+UpdateVehicle
+VehiclesDetails
+AddVehicles
+MyBookings
+MyVehicles
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

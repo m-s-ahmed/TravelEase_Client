@@ -13,6 +13,8 @@ import Login from "./components/Login/Login.jsx";
 import AuthProvider from "./contexts/AuthProvider.jsx";
 import VehiclesDetails from "./components/VehiclesDetails/VehiclesDetails.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
+import { Toaster } from "react-hot-toast";
+import UpdateVehicle from "./components/UpdateVehicle/UpdateVehicle.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,15 +39,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/addvehicles",
-        element: <AddVehicles></AddVehicles>,
+        element: (
+          <PrivateRoute>
+            <AddVehicles></AddVehicles>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myvehicles",
-        element: <MyVehicles></MyVehicles>,
+        element: (
+          <PrivateRoute>
+            <MyVehicles></MyVehicles>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/mybookings",
-        element: <MyBookings></MyBookings>,
+        element: (
+          <PrivateRoute>
+            <MyBookings></MyBookings>
+          </PrivateRoute>
+        ),
       },
       { path: "all-vehicles", element: <AllVehicles></AllVehicles> },
       {
@@ -53,6 +67,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <VehiclesDetails></VehiclesDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "update-vehicle/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateVehicle />
           </PrivateRoute>
         ),
       },
@@ -64,6 +86,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router}></RouterProvider>
+      <Toaster position="top-right" />
     </AuthProvider>
   </StrictMode>,
 );
