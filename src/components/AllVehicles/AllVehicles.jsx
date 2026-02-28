@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import { axiosPublic } from "../../api/axiosPublic";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import { timeAgo } from "../../utils/timeAgo";
 
 const AllVehicles = () => {
   const API = import.meta.env.VITE_API_URL;
@@ -214,7 +215,9 @@ const AllVehicles = () => {
               </div>
 
               <p className="font-semibold mt-2">${v.pricePerDay}/day</p>
-
+              <p className="text-sm opacity-70 mt-2">
+                Added {timeAgo(v.createdAt)}
+              </p>
               <div className="card-actions justify-end mt-3">
                 <Link to={`/vehicles/${v._id}`} className="btn btn-outline">
                   View Details

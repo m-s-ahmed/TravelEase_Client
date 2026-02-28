@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import carbanner from "../../assets/carbanner.jpg";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const API = import.meta.env.VITE_API_URL;
@@ -51,13 +52,25 @@ const Home = () => {
 
         <div className="hero-content relative z-10 text-center text-white px-4 w-full">
           <div className="max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg leading-tight">
+            {/* <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 drop-shadow-lg leading-tight">
               TravelEase
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl opacity-90">
               Book your perfect vehicle anytime, anywhere.
-            </p>
+            </p> */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 3 }}
+            >
+              <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+                TravelEase
+              </h1>
+              <p className="py-4 text-lg md:text-xl opacity-90">
+                Book your perfect vehicle anytime, anywhere.
+              </p>
+            </motion.div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link to="/all-vehicles" className="btn btn-primary px-8">
