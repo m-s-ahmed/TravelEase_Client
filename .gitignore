@@ -14,11 +14,6 @@ dist-ssr
 .env
 
 
-
-AddVehicles
-MyBookings
-MyVehicles
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
