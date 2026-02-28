@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../contexts/useAuth";
+import LoadingSpinner from "../LoadingSpinner";
 
 const MyBookings = () => {
   const API = import.meta.env.VITE_API_URL;
@@ -25,7 +26,7 @@ const MyBookings = () => {
     return () => (ignore = true);
   }, [API, user?.email]);
 
-  if (loading) return <p className="p-6">Loading...</p>;
+  if (loading) return <LoadingSpinner text="Fetching vehicles..." />;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">

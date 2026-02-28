@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
+import { axiosPublic } from "../../api/axiosPublic";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const AllVehicles = () => {
   const API = import.meta.env.VITE_API_URL;
@@ -28,6 +30,7 @@ const AllVehicles = () => {
     return params.toString();
   }, [category, location, sort, minPrice, maxPrice]);
 
+  // using axios
   useEffect(() => {
     let ignore = false;
 
@@ -36,25 +39,47 @@ const AllVehicles = () => {
         setLoading(true);
         setError("");
 
-        const url = `${API}/api/vehicles${queryString ? `?${queryString}` : ""}`;
-        const res = await fetch(url);
-
-        if (!res.ok) throw new Error("Failed to load vehicles");
-        const data = await res.json();
-
-        if (!ignore) setVehicles(data);
+        const res = await axiosPublic.get(
+          `/api/vehicles${queryString ? `?${queryString}` : ""}`,
+        );
+        if (!ignore) setVehicles(res.data);
       } catch (e) {
-        if (!ignore) setError(e.message || "Something went wrong");
+        if (!ignore) setError(e?.message || "Something went wrong");
       } finally {
         if (!ignore) setLoading(false);
       }
     };
 
     load();
-    return () => {
-      ignore = true;
-    };
-  }, [API, queryString]);
+    return () => (ignore = true);
+  }, [queryString]);
+  // useEffect(() => {
+  //   let ignore = false;
+
+  //   const load = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError("");
+
+  //       const url = `${API}/api/vehicles${queryString ? `?${queryString}` : ""}`;
+  //       const res = await fetch(url);
+
+  //       if (!res.ok) throw new Error("Failed to load vehicles");
+  //       const data = await res.json();
+
+  //       if (!ignore) setVehicles(data);
+  //     } catch (e) {
+  //       if (!ignore) setError(e.message || "Something went wrong");
+  //     } finally {
+  //       if (!ignore) setLoading(false);
+  //     }
+  //   };
+
+  //   load();
+  //   return () => {
+  //     ignore = true;
+  //   };
+  // }, [API, queryString]);
 
   const clearFilters = () => {
     setCategory("");
@@ -64,7 +89,6 @@ const AllVehicles = () => {
     setMaxPrice("");
   };
   return (
-    
     <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <h2 className="text-3xl font-bold">All Vehicles</h2>
@@ -158,7 +182,7 @@ const AllVehicles = () => {
       </div>
 
       {/* States */}
-      {loading && <p>Loading...</p>}
+      {loading && <LoadingSpinner text="Fetching vehicles..." />}
       {error && <p className="text-red-500">{error}</p>}
 
       {!loading && !error && vehicles.length === 0 && (

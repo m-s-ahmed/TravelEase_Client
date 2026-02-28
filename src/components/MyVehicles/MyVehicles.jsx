@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../../contexts/useAuth";
+import LoadingSpinner from "../LoadingSpinner";
 
 const MyVehicles = () => {
   const API = import.meta.env.VITE_API_URL;
@@ -59,7 +60,7 @@ const MyVehicles = () => {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold mb-6">My Vehicles</h2>
 
-      {loading && <p>Loading...</p>}
+      {loading && <LoadingSpinner text="Fetching vehicles..." />}
 
       {!loading && vehicles.length === 0 && <p>No vehicles added yet.</p>}
 
