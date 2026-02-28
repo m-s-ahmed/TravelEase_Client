@@ -15,6 +15,7 @@ import VehiclesDetails from "./components/VehiclesDetails/VehiclesDetails.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
 import { Toaster } from "react-hot-toast";
 import UpdateVehicle from "./components/UpdateVehicle/UpdateVehicle.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);
