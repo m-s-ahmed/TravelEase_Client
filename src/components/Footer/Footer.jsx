@@ -1,13 +1,13 @@
 import React from "react";
 import "./icon.css";
-import Name from "../Name";
+import Namee from "../Namee";
 
 const Footer = () => {
   return (
     <div>
       <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
         <nav>
-          <Name></Name>
+          <Namee></Namee>
         </nav>
         <nav>
           <div className="grid grid-flow-col gap-4">

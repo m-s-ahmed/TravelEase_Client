@@ -1,6 +1,6 @@
 import React from "react";
 
-const Name = () => {
+const Namee = () => {
   return (
     <div>
       <div class="flex items-center justify-center">
@@ -36,4 +36,4 @@ const Name = () => {
   );
 };
 
-export default Name;
+export default Namee;
