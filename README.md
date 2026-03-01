@@ -1,16 +1,57 @@
-# React + Vite
+# TravelEase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**TravelEase** is a full-stack vehicle booking platform that allows users to explore, list, and book vehicles seamlessly.  
+It is built with React, Node.js, Express, MongoDB, and Firebase Authentication.
 
-Currently, two official plugins are available:
+**Live Site URL:**  
+https://travel-ease-client-ten.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Secure user authentication using Firebase (Login / Register).
+- Users can add, update, and delete their own vehicles.
+- Advanced filtering and sorting (category, location, price range).
+- Real-time booking system with booking history.
+- Vehicles are sorted by newest/price options.
+- Fully responsive design (Mobile, Tablet, Desktop).
+- Fast deployment using Vercel (Client) and Render (Server).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tech Stack
+
+### Frontend
+
+- React (Vite)
+- Tailwind CSS + DaisyUI
+- Firebase Authentication
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB Atlas
+- CORS configuration
+
+---
+
+## Project Structure
+
+- Client: React + Vercel Deployment
+- Server: Express + Render Deployment
+- Database: MongoDB Atlas
+
+---
+
+## Backend API
+
+https://travelease-server-e6qh.onrender.com
+
+---
+
+## Developed By
+
+Md. Sajid Ahmed  
+Full Stack Web Developer
